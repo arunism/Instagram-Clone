@@ -1,0 +1,30 @@
+{% load static %}
+
+<nav class="navigation">
+    <a href="{% url 'post:home' %}">
+        <img src="{% static './images/navLogo.png' %}" alt="logo" title="logo" class="navigation__logo" />
+    </a>
+    <div class="navigation__search-container">
+        <i class="fa fa-search"></i>
+        <input type="text" placeholder="Search">
+    </div>
+    <div class="navigation__icons">
+        <a href="explore.html" class="navigation__link">
+            <i class="fa fa-compass"></i>
+        </a>
+        <a href="#" class="navigation__link">
+            <i class="fa fa-heart-o"></i>
+        </a>
+        <a href="profile.html" class="navigation__link">
+            <i class="fa fa-user-o"></i>
+        </a>
+    </div>
+</nav>
+
+{% if messages %}
+  {% for m in messages %}
+    <div style='text-align:center;' class="alert alert-{{m.tags}}">
+      {{ m }}
+    </div>
+  {% endfor %}
+{% endif %}

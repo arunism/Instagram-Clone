@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+        {% if messages %}
+          {% for m in messages %}
+            <div class="alert alert-{{m.tags}}">
+              {{ m }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+
+        <main class="login">
+            <div class="login__column">
+                <img src="{% static './images/phone.png' %}" alt="Phone Image" title="Phone Image" class="login__phone-image" />
+            </div>
+            <section class="login__column">
+                <div class="login__section login__sign-in">
+                    <img src="{% static './images/logo.png' %}" alt="Logo" title="Logo" class="login__logo" />
+
+                    <form method="POST" class="login__form">
+                        {% csrf_token %}
+                        <div class="login__input-container">
+                            <input type="text" name="email" placeholder="Email" required class="login__input" />
+                        </div>
+                        <div class="login__input-container">
+                            <input type="text" name="first_name" placeholder="First Name" required class="login__input" />
+                        </div>
+                        <div class="login__input-container">
+                            <input type="text" name="last_name" placeholder="Last Name" required class="login__input" />
+                        </div>
+                        <div class="login__input-container">
+                            <input type="text" name="username" placeholder="Username" required class="login__input" />
+                        </div>
+                        <div class="login__input-container">
+                            <input type="password" name="password" placeholder="Password" required class="login__input" />
+                        </div>
+                        <div class="login__input-container">
+                            <input type="password" name="confirm_password" placeholder="Confirm Password" required class="login__input" />
+                        </div>
+                        <div class="login__input-container">
+                            <input type="submit" value="Sign Up" class="login__input login__input--btn" />
+                        </div>
+                    </form>
+                    <span class="login__divider">or</span>
+                    <a class="login__fb-link" href="#">
+                        <i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i> Sign Up with Facebook
+                    </a>
+                </div>
+                <div class="login__section login__sign-up">
+                    <span class="login__text">
+                        Already have an account?
+                        <a href="#" class="login__link">Log In</a>
+                    </span>
+                </div>
+                <div class="login__section login__section--transparent login__app">
+                    <span class="login__text">Get the app.</span>
+                    <div class="login__appstores">
+                        <img src="{% static './images/ios.png' %}" alt="iOS" title="Get the app!" class="login__appstore" />
+                        <img src="{% static './images/android.png' %}" alt="Android" title="Get the app!" class="login__appstore" />
+                    </div>
+                </div>
+            </section>
+        </main>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{title}} | Instaclone</title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="shortcut icon" href="{% static './images/favicon.ico' %}" type="image/x-icon">
+        <link href="{% static './css/style.css' %}" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    </head>
+    {% if title == 'Login' or title == 'Register' %}
+      <body class="no-padding">
+    {% else %}
+      <body>
+    {% endif %}
+
+      {% block content %}{% endblock %}
+
+    <footer class="footer">
+        <nav class="footer__nav">
+            <ul class="footer__list">
+                <li class="footer__list-item"><a href="#" class="footer__link">about us</a></li>
+                <li class="footer__list-item"><a href="#" class="footer__link">support</a></li>
+                <li class="footer__list-item"><a href="#" class="footer__link">blog</a></li>
+                <li class="footer__list-item"><a href="#" class="footer__link">press</a></li>
+                <li class="footer__list-item"><a href="#" class="footer__link">api</a></li>
+                <li class="footer__list-item"><a href="#" class="footer__link">jobs</a></li>
+                <li class="footer__list-item"><a href="#" class="footer__link">privacy</a></li>
+                <li class="footer__list-item"><a href="#" class="footer__link">terms</a></li>
+                <li class="footer__list-item"><a href="#" class="footer__link">directory</a></li>
+                <li class="footer__list-item"><a href="#" class="footer__link">language</a></li>
+            </ul>
+        </nav>
+        <span class="footer__copyright">&copy; <script>document.write(new Date().getFullYear());</script> instagram</span>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{% static './js/app.js' %}"></script>
+
+</body>
+</html>
