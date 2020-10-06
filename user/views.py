@@ -7,8 +7,21 @@ from django.conf import settings
 # Create your views here.
 
 def login(request):
-    context = {'title': 'Login'}
-    return render(request, 'login.html', context)
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, 'You have been logged in to your account!')
+            return redirect('post:home')
+        else:
+            messages.error(request, 'Oops! Username and Password do not match!')
+            return redirect('user:login')
+    else:
+        context = {'title': 'Login'}
+        return render(request, 'login.html', context)
 
 def register(request):
     if request.method == 'POST':
@@ -21,10 +34,10 @@ def register(request):
 
         if password == confirm_password:
             if User.objects.filter(username=username).exists():
-                messages.info(request, 'Oops! User with this Username already exists.')
+                messages.error(request, 'Oops! User with this Username already exists.')
                 return redirect('user:register')
             elif User.objects.filter(email=email).exists():
-                messages.info(request, 'Oops! User with this Email already exists.')
+                messages.error(request, 'Oops! User with this Email already exists.')
                 return redirect('user:register')
             else:
                 user = User.objects.create_user(username=username,email=email,password=password,first_name=first_name,last_name=last_name)
@@ -32,7 +45,7 @@ def register(request):
                 messages.success(request, f'Congratulations! {first_name}, Your account has been created successfully!')
                 return redirect('post:home')
         else:
-            messages.info(request, 'Oops! Password do not match.')
+            messages.error(request, 'Oops! Password do not match.')
             return redirect('user:register')
 
     else:

@@ -19,7 +19,8 @@
                 <div class="login__section login__sign-in">
                     <img src="{% static './images/logo.png' %}" alt="Logo" title="Logo" class="login__logo" />
                     <!-- x   -->
-                    <form method="GET" class="login__form">
+                    <form method="POST" class="login__form">
+                        {% csrf_token %}
                         <div class="login__input-container">
                             <input type="text" name="username" placeholder="Username" required class="login__input" />
                         </div>
