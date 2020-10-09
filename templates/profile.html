@@ -107,5 +107,16 @@
                 </div>
             </section>
         </main>
+        <div class="popUp">
+            <i class="fa fa-times fa-2x" id="closePopUp"></i>
+            <div class="popUp__container">
+                <div class="popUp__buttons">
+                    <a href="{% url 'user:change-password' %}" class="popUp__button">Change Password</a>
+                    <a href="{% url 'user:profile' %}" class="popUp__button">Reset Password</a>
+                    <a href="{% url 'user:logout' %}" class="popUp__button">Log Out</a>
+                    <a href="#" class="popUp__button" id="cancelPopUp">Cancel</a>
+                </div>
+            </div>
+        </div>
 
 {% endblock %}

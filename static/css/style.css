@@ -357,7 +357,7 @@ input{
     width:152px;
     height: 152px;
     border-radius: 50%;
-    animation: 1.5s potato infinite linear;
+    animation: 20s potato infinite linear;
 }
 @keyframes potato{
     from{
@@ -367,8 +367,7 @@ input{
         transform: rotate(1turn)
     }
 }
-.profile__name,
-.profile__numbers{
+.profile__name, .profile__numbers{
     display: flex;
     margin-bottom: 20px;
 }
@@ -393,7 +392,7 @@ input{
 }
 .profile-picture__overlay{
     background-color: rgba(0,0,0,0.3);
-    width: 293px;
+    width: 100%;
     height: 100%;
     position: absolute;
     top:0;
@@ -403,7 +402,7 @@ input{
     justify-content: center;
     color:white;
     opacity: 0;
-    transition:opacity .5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 .profile-picture:hover .profile-picture__overlay{
     opacity: 1;
