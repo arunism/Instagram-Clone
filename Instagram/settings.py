@@ -31,14 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'post.apps.PostConfig',
+    'user.apps.UserConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'post.apps.PostConfig',
-    'user.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,9 +131,9 @@ LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = '/user/login/'
 
 from .secret import *
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = EMAIL_HOST
-EMAIL_PORT = EMAIL_PORT
-EMAIL_HOST_USER = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
-EMAIL_USE_TLS = EMAIL_USE_TLS
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'projectmajor601@gmail.com'
+EMAIL_HOST_PASSWORD = 'majorproject123'

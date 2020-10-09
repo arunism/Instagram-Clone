@@ -542,6 +542,13 @@ input[type="submit"]{
     font-size: 14px;
     border-radius: 3px;
 }
+.profile-messages {
+  margin: 0 50px;
+  font-weight: normal;
+}
+.profile-messages-bold {
+  margin: 0 50px;
+}
 
 /* -------------------- Explore Page -------------------- */
 .people{
