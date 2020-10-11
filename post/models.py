@@ -44,6 +44,7 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, related_name='tags')
     photo = models.ImageField(upload_to=get_user_directory, null=False, verbose_name='Picture')
     caption = models.TextField(max_length=1000, verbose_name='Caption')
+    location = models.CharField(max_length=100, null=True, blank=True)
     likes = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)

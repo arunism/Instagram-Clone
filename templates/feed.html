@@ -6,18 +6,21 @@
         {% include 'navbar.html' %}
 
         <main class="feed">
+          {% for post in all_posts %}
             <section class="photo">
                 <header class="photo__header">
                     <div class="photo__header-column">
                         <img class="photo__avatar" src="{% static './images/avatar.jpg' %}" />
                     </div>
                     <div class="photo__header-column">
-                        <span class="photo__username">arun</span>
-                        <span class="photo__location">Machine Learning and Deep Learning Newbie - Nepal</span>
+                        <a href="#"><span class="photo__username">{{ post.user.username }}</span></a>
+                        {% if post.location %}
+                        <span class="photo__location">{{ post.location }}</span>
+                        {% endif %}
                     </div>
                 </header>
                 <div class="photo__file-container">
-                    <img class="photo__file" src="{% static './images/feedPhoto.jpg' %}" />
+                    <img class="photo__file" src="{{ post.photo.url }}" />
                 </div>
                 <div class="photo__info">
                     <div class="photo__icons">
@@ -28,60 +31,26 @@
                             <i class="fa fa-comment-o fa-lg"></i>
                         </span>
                     </div>
-                    <span class="photo__likes">35 likes</span>
+                    <span class="photo__likes">{{ post.likes }} likes</span>
                     <ul class="photo__comments">
                         <li class="photo__comment">
-                            <span class="photo__comment-author">arun</span>wow this is great!
+                            <a href="#"><span class="photo__comment-author">{{ post.user.username }}</span></a>
+                            {{ post.caption }}
                         </li>
                         <li class="photo__comment">
                             <span class="photo__comment-author">lynn</span>no is not!
                         </li>
                     </ul>
-                    <span class="photo__time-ago">11 hours ago</span>
+                    <span class="photo__time-ago">{{ post.created_at }}</span>
                     <div class="photo__add-comment-container">
                         <textarea placeholder="Add a comment..." class="photo__add-comment"></textarea>
                         <i class="fa fa-ellipsis-h"></i>
                     </div>
                 </div>
             </section>
-            <section class="photo">
-                <header class="photo__header">
-                    <div class="photo__header-column">
-                        <img class="photo__avatar" src="{% static './images/avatar.jpg' %}" />
-                    </div>
-                    <div class="photo__header-column">
-                        <span class="photo__username">arun</span>
-                        <span class="photo__location">Machine Learning and Deep Learning Newbie - Nepal</span>
-                    </div>
-                </header>
-                <div class="photo__file-container">
-                    <img class="photo__file" src="{% static './images/feedPhoto.jpg' %}" />
-                </div>
-                <div class="photo__info">
-                    <div class="photo__icons">
-                        <span class="photo__icon">
-                            <i class="fa fa-heart-o heart fa-lg"></i>
-                        </span>
-                        <span class="photo__icon">
-                            <i class="fa fa-comment-o fa-lg"></i>
-                        </span>
-                    </div>
-                    <span class="photo__likes">35 likes</span>
-                    <ul class="photo__comments">
-                        <li class="photo__comment">
-                            <span class="photo__comment-author">arun</span>wow this is great!
-                        </li>
-                        <li class="photo__comment">
-                            <span class="photo__comment-author">lynn</span>no is not!
-                        </li>
-                    </ul>
-                    <span class="photo__time-ago">11 hours ago</span>
-                    <div class="photo__add-comment-container">
-                        <textarea placeholder="Add a comment..." class="photo__add-comment"></textarea>
-                        <i class="fa fa-ellipsis-h"></i>
-                    </div>
-                </div>
-            </section>
+
+          {% endfor %}
+
         </main>
 
 {% endblock %}
