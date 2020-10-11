@@ -1,7 +1,6 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
 from django.utils.text import slugify
 from django.urls import reverse
 
@@ -13,13 +12,10 @@ def get_user_directory(instance, file):
 
 class Tag(models.Model):
     title = models.CharField(max_length=100, verbose_name='Tag')
-    slug = models.SlugField(max_length=75, unique=True, null=False)
+    slug = models.SlugField(max_length=75, unique=True, null=False, blank=True)
 
     class Meta:
         verbose_name_plural = 'Tags'
-
-    def __str__(self):
-        return self.title
 
     def get_absolute_url(self):
         return reverse('tags', arg=[self.slug])
@@ -29,7 +25,7 @@ class Tag(models.Model):
         slug = slugify(self.title)
         unique_slug = slug
         num = 1
-        while Product.objects.filter(slug=unique_slug).exists():
+        while Tag.objects.filter(slug=unique_slug).exists():
             unique_slug = f'{slug}-{num}'
             num += 1
         return unique_slug
@@ -54,9 +50,6 @@ class Post(models.Model):
 
     class Meta:
         verbose_name_plural = 'Posts'
-
-    def __str__(self):
-        return self.id
 
     def get_absolute_url(self):
         return reverse('postdetail', args=[str(self.id)])
