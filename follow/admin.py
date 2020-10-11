@@ -9,7 +9,7 @@ class StreamAdmin(admin.ModelAdmin):
     list_display = ['user', 'post']
     # list_editable = ['new_price', 'available']
     list_filter = ['user', 'date']
-    readonly_fields = ['user', 'post', 'following', 'date']
+    # readonly_fields = ['user', 'post', 'following', 'date']
     class Meta:
         model = Stream
 

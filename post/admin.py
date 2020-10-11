@@ -9,7 +9,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ['user', 'id']
     # list_editable = ['new_price', 'available']
     list_filter = ['user', 'created_at', 'likes']
-    readonly_fields = ['id', 'user', 'tags', 'photo', 'caption', 'likes', 'created_at', 'updated_at']
+    readonly_fields = ['id', 'user', 'tags', 'photo', 'caption', 'location', 'likes', 'created_at', 'updated_at']
     class Meta:
         model = Post
 

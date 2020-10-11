@@ -17,6 +17,9 @@ class Tag(models.Model):
     class Meta:
         verbose_name_plural = 'Tags'
 
+    def __str__(self):
+        return self.title
+
     def get_absolute_url(self):
         return reverse('tags', arg=[self.slug])
 
@@ -45,7 +48,7 @@ class Post(models.Model):
     photo = models.ImageField(upload_to=get_user_directory, null=False, verbose_name='Picture')
     caption = models.TextField(max_length=1000, verbose_name='Caption')
     location = models.CharField(max_length=100, null=True, blank=True)
-    likes = models.IntegerField()
+    likes = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
 

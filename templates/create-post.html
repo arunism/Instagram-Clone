@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'navbar.html' %}
+
+<main class="edit-profile">
+    <section class="profile-form">
+        <header class="profile-form__header">
+            <div class="profile-form__avatar-container">
+                <img src="{% static './images/avatar.jpg' %}" class="profile-form__avatar" />
+            </div>
+            <h4 class="profile-form__title">{{ user.username }}</h4>
+        </header>
+        <form method="POST" enctype="multipart/form-data" class="edit-profile__form">
+            {% csrf_token %}
+            <div class="edit-profile__form-row">
+                <label for="old_password" class="edit-profile__label">Post tags</label>
+                {{ form.tags }}
+            </div>
+            <div class="edit-profile__form-row">
+              <label for="new_password" class="edit-profile__label">Location</label>
+              {{form.location}}
+            </div>
+            <div class="edit-profile__form-row">
+                <label for="old_password" class="edit-profile__label">Photo</label>
+                {{ form.photo }}
+            </div>
+            <div class="edit-profile__form-row">
+                <label for="confirm_new_password" class="edit-profile__label">Caption</label>
+                {{ form.caption }}
+            </div>
+            <div class="edit-profile__form-row">
+                <label class="edit-profile__label"></label>
+                <input type="submit" value="Change">
+            </div>
+        </form>
+    </section>
+</main>
+
+{% endblock %}
