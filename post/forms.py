@@ -5,8 +5,7 @@ class CreatePostForm(forms.ModelForm):
     photo = forms.ImageField(required=True)
     caption = forms.CharField(widget=forms.Textarea(attrs={'class': 'edit-profile__input'}))
     location = forms.CharField(widget=forms.TextInput(attrs={'class': 'edit-profile__input'}))
-    tags = forms.CharField(widget=forms.TextInput(attrs={'class': 'edit-profile__input'}))
 
     class Meta:
         model = Post
-        fields = ('photo', 'caption', 'location', 'tags')
+        fields = ('photo', 'caption', 'location')

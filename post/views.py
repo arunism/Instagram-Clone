@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-from post.models import Post, Tag
+from post.models import Post
 from follow.models import Stream
 from post.forms import CreatePostForm
 
@@ -24,7 +24,6 @@ def feeds(request):
 @login_required
 def create_post(request):
     user = request.user.id
-    all_tags = []
 
     if request.method == 'POST':
         form = CreatePostForm(request.POST, request.FILES)
@@ -33,15 +32,8 @@ def create_post(request):
             photo = form.cleaned_data.get('photo')
             caption = form.cleaned_data.get('caption')
             location = form.cleaned_data.get('location')
-            tags = form.cleaned_data.get('tags')
-
-            tags_list = list(tags.split(','))
-            for tag in tags_list:
-                t, created_at = Tag.objects.get_or_create(title=tag)
-                all_tags.append(t)
 
             p, created_at = Post.objects.get_or_create(photo=photo, caption=caption, user_id=user)
-            p.tags.set(all_tags)
             p.save()
             return redirect('post:home')
     else:

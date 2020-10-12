@@ -16,10 +16,6 @@
         <form method="POST" enctype="multipart/form-data" class="edit-profile__form">
             {% csrf_token %}
             <div class="edit-profile__form-row">
-                <label for="old_password" class="edit-profile__label">Post tags</label>
-                {{ form.tags }}
-            </div>
-            <div class="edit-profile__form-row">
               <label for="new_password" class="edit-profile__label">Location</label>
               {{form.location}}
             </div>

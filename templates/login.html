@@ -26,7 +26,7 @@
                         </div>
                         <div class="login__input-container">
                             <input type="password" name="password" placeholder="Password" required class="login__input" />
-                            <a href="#" class="login__form-link">Forgot?</a>
+                            <a href="{% url 'user:reset-password' %}" class="login__form-link">Forgot?</a>
                         </div>
                         <div class="login__input-container">
                             <input type="submit" value="Log in" class="login__input login__input--btn" />
