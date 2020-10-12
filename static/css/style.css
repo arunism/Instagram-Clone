@@ -103,7 +103,7 @@ input{
 }
 
 /* -------------------- Feeds Page -------------------- */
-.feed{
+.feed, .image-detail{
     display: flex;
     flex-direction: column;
     align-items: center;

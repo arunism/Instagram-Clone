@@ -19,9 +19,11 @@
                         {% endif %}
                     </div>
                 </header>
-                <div class="photo__file-container">
-                    <img class="photo__file" src="{{ post.photo.url }}" />
-                </div>
+                <a href="{% url 'post:post_details' post.id %}">
+                  <div class="photo__file-container">
+                      <img class="photo__file" src="{{ post.photo.url }}" />
+                  </div>
+                </a>
                 <div class="photo__info">
                     <div class="photo__icons">
                         <span class="photo__icon">

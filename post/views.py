@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 from post.models import Post, Tag
 from follow.models import Stream
 from post.forms import CreatePostForm
@@ -48,3 +49,9 @@ def create_post(request):
 
     context = {'title':'Create New Post', 'form':form, 'user':request.user}
     return render(request, 'create-post.html', context)
+
+@login_required
+def post_details(request, id):
+    post = get_object_or_404(Post, id=id)
+    context = {'title':'Post Details', 'post':post}
+    return render(request, 'post-detail.html', context)
