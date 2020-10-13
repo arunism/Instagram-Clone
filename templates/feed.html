@@ -10,7 +10,9 @@
             <section class="photo">
                 <header class="photo__header">
                     <div class="photo__header-column">
-                        <img class="photo__avatar" src="{% static './images/avatar.jpg' %}" />
+                        <a href="#">
+                          <img class="photo__avatar" src="{% static './images/avatar.jpg' %}" />
+                        </a>
                     </div>
                     <div class="photo__header-column">
                         <a href="#"><span class="photo__username">{{ post.user.username }}</span></a>
@@ -27,7 +29,9 @@
                 <div class="photo__info">
                     <div class="photo__icons">
                         <span class="photo__icon">
-                            <i class="fa fa-heart-o heart fa-lg"></i>
+                            <a href="{% url 'reaction:likes' post.id %}">
+                              <i class="fa fa-heart-o heart fa-lg"></i>
+                            </a>
                         </span>
                         <span class="photo__icon">
                             <i class="fa fa-comment-o fa-lg"></i>

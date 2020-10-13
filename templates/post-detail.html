@@ -26,7 +26,7 @@
               <div class="photo__info">
                   <div class="photo__icons">
                       <span class="photo__icon">
-                          <i class="fa fa-heart-o heart fa-lg"></i>
+                          <a href="{% url 'reaction:likes' post.id %}"><i class="fa fa-heart-o heart fa-lg"></i></a>
                       </span>
                       <span class="photo__icon">
                           <i class="fa fa-comment-o fa-lg"></i>

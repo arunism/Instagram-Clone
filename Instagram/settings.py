@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'post.apps.PostConfig',
     'user.apps.UserConfig',
     'follow.apps.FollowConfig',
+    'reaction.apps.ReactionConfig',
 ]
 
 MIDDLEWARE = [
