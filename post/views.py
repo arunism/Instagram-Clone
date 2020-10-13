@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from post.models import Post
+from reaction.models import Like
 from follow.models import Stream
 from post.forms import CreatePostForm
 

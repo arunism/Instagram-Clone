@@ -9,10 +9,12 @@
           <section class="photo">
               <header class="photo__header">
                   <div class="photo__header-column">
+                    <a href="{% url 'profile:profile' post.user %}">
                       <img class="photo__avatar" src="{% static './images/avatar.jpg' %}" />
+                    </a>
                   </div>
                   <div class="photo__header-column">
-                      <a href="#"><span class="photo__username">{{ post.user.username }}</span></a>
+                      <a href="{% url 'profile:profile' post.user %}"><span class="photo__username">{{ post.user.username }}</span></a>
                       {% if post.location %}
                       <span class="photo__location">{{ post.location }}</span>
                       {% endif %}
@@ -35,7 +37,7 @@
                   <span class="photo__likes">{{ post.likes }} likes</span>
                   <ul class="photo__comments">
                       <li class="photo__comment">
-                          <a href="#"><span class="photo__comment-author">{{ post.user.username }}</span></a>
+                          <a href="{% url 'profile:profile' post.user %}"><span class="photo__comment-author">{{ post.user.username }}</span></a>
                           {{ post.caption }}
                       </li>
                       <li class="photo__comment">

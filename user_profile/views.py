@@ -17,6 +17,7 @@ def profile(request, username):
     post_count = Post.objects.filter(user=user).count()
     following_count = Follow.objects.filter(followers=user).count()
     followers_count = Follow.objects.filter(following=user).count()
+    follow_status = Follow.objects.filter(followers=request.user, following=user).exists()
 
     context = {
         'title': 'Profile',
@@ -24,6 +25,7 @@ def profile(request, username):
         'posts':posts,
         'post_count':post_count,
         'following_count':following_count,
-        'followers_count':followers_count
+        'followers_count':followers_count,
+        'follow_status': follow_status
     }
     return render(request, 'profile.html', context)

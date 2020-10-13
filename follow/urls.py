@@ -3,5 +3,5 @@ from follow import views
 
 app_name = 'follow'
 urlpatterns = [
-    path('', views.follow, name='follow'),
+    path('<username>/<option>', views.follow, name='follow'),
 ]

@@ -17,6 +17,14 @@
                             {% if user.is_authenticated and user == profile.user %}
                             <a href="edit-profile.html" class="profile__button u-fat-text">Edit profile</a>
                             <i class="fa fa-cog fa-2x" id="cog"></i>
+                            {% else %}
+                            <div class="people__column">
+                              {% if follow_status == True %}
+                                <a href="{% url 'follow:follow' profile.user 0 %}">Unfollow</a>
+                              {% else %}
+                                <a href="{% url 'follow:follow' profile.user 1 %}">Follow</a>
+                              {% endif %}
+                            </div>
                             {% endif %}
                         </div>
                         <ul class="profile__numbers">
@@ -59,7 +67,7 @@
                 </header>
                 <div class="profile__pictures">
                   {% for post in posts %}
-                    <a href="image-detail.html" class="profile-picture">
+                    <a href="{% url 'post:post_details' post.id %}" class="profile-picture">
                         <img src="{{ post.photo.url }}" class="profile-picture__picture" />
                         <div class="profile-picture__overlay">
                             <span class="profile-picture__number">

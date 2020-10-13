@@ -10,27 +10,29 @@
             <section class="photo">
                 <header class="photo__header">
                     <div class="photo__header-column">
-                        <a href="#">
+                        <a href="{% url 'profile:profile' post.user %}">
                           <img class="photo__avatar" src="{% static './images/avatar.jpg' %}" />
                         </a>
                     </div>
                     <div class="photo__header-column">
-                        <a href="#"><span class="photo__username">{{ post.user.username }}</span></a>
+                        <a href="{% url 'profile:profile' post.user %}"><span class="photo__username">{{ post.user.username }}</span></a>
                         {% if post.location %}
                         <span class="photo__location">{{ post.location }}</span>
                         {% endif %}
                     </div>
                 </header>
-                <a href="{% url 'post:post_details' post.id %}">
-                  <div class="photo__file-container">
-                      <img class="photo__file" src="{{ post.photo.url }}" />
-                  </div>
-                </a>
+                <div class="photo__file-container">
+                    <img class="photo__file" src="{{ post.photo.url }}" />
+                </div>
                 <div class="photo__info">
                     <div class="photo__icons">
                         <span class="photo__icon">
                             <a href="{% url 'reaction:likes' post.id %}">
+                              {% if like_status == True %}
                               <i class="fa fa-heart-o heart fa-lg"></i>
+                              {% else %}
+                              <i class="fa heart-red fa-heart heart fa-lg"></i>
+                              {% endif %}
                             </a>
                         </span>
                         <span class="photo__icon">
@@ -40,7 +42,7 @@
                     <span class="photo__likes">{{ post.likes }} likes</span>
                     <ul class="photo__comments">
                         <li class="photo__comment">
-                            <a href="#"><span class="photo__comment-author">{{ post.user.username }}</span></a>
+                            <a href="{% url 'profile:profile' post.user %}"><span class="photo__comment-author">{{ post.user.username }}</span></a>
                             {{ post.caption }}
                         </li>
                         <li class="photo__comment">
