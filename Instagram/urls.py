@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('post.urls')),
     path('user/', include('user.urls')),
+    path('profile/', include('user_profile.urls')),
     path('follow/', include('follow.urls')),
     path('reactions/', include('reaction.urls')),
 

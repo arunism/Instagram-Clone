@@ -61,11 +61,6 @@ def register(request):
         context = {'title': 'Register'}
         return render(request, 'signup.html', context)
 
-@login_required
-def profile(request):
-    context = {'title': 'Profile'}
-    return render(request, 'profile.html', context)
-
 def password_reset(request):
         context = {'title': 'Reset Password'}
         return render(request, 'reset-password.html', context)

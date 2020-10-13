@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'post.apps.PostConfig',
     'user.apps.UserConfig',
+    'user_profile.apps.UserProfileConfig',
     'follow.apps.FollowConfig',
     'reaction.apps.ReactionConfig',
 ]
