@@ -11,7 +11,11 @@
                 <header class="photo__header">
                     <div class="photo__header-column">
                         <a href="{% url 'profile:profile' post.user %}">
-                          <img class="photo__avatar" src="{% static './images/avatar.jpg' %}" />
+                          {% if post.user.profile.picture %}
+                          <img class="photo__avatar" src="{{ post.user.profile.picture.url }}" />
+                          {% else %}
+                          <img class="photo__avatar" src="{% static './images/default.jpg'%}" />
+                          {% endif %}
                         </a>
                     </div>
                     <div class="photo__header-column">
@@ -43,7 +47,9 @@
                     <ul class="photo__comments">
                         <li class="photo__comment">
                             <a href="{% url 'profile:profile' post.user %}"><span class="photo__comment-author">{{ post.user.username }}</span></a>
+                            {% if post.caption %}
                             {{ post.caption }}
+                            {% endif %}
                         </li>
                         <li class="photo__comment">
                             <span class="photo__comment-author">lynn</span>no is not!

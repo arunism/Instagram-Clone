@@ -51,8 +51,8 @@ def register(request):
             else:
                 user = User.objects.create_user(username=username,email=email,password=password,first_name=first_name,last_name=last_name)
                 user.save()
-                messages.success(request, f'Congratulations! {first_name}, Your account has been created successfully!')
-                return redirect('post:home')
+                messages.success(request, f'Congratulations! {first_name}, Your account has been created!/n Now, please login and edit your informations.')
+                return redirect('profile:edit-profile')
         else:
             messages.error(request, 'Oops! Password do not match.')
             return redirect('user:register')
