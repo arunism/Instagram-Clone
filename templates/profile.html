@@ -15,7 +15,7 @@
                         <div class="profile__name">
                             <h1 class="profile__title">{{ profile.user }}</h1>
                             {% if user.is_authenticated and user == profile.user %}
-                            <a href="edit-profile.html" class="profile__button u-fat-text">Edit profile</a>
+                            <a href="{% url 'profile:edit-profile' %}" class="profile__button u-fat-text">Edit profile</a>
                             <i class="fa fa-cog fa-2x" id="cog"></i>
                             {% else %}
                             <div class="people__column">

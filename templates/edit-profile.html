@@ -11,40 +11,45 @@
                     <div class="profile-form__avatar-container">
                         <img src="{% static './images/avatar.jpg' %}" class="profile-form__avatar"/>
                     </div>
-                    <h4 class="profile-form__title">arun</h4>
+                    <h4 class="profile-form__title">{{request.user}}</h4>
                 </header>
-                <form action="#" class="edit-profile__form">
+                <form method="POST" enctype="multipart/form-data" class="edit-profile__form">
+                  {% csrf_token %}
+                  <div class="edit-profile__form-row">
+                      <label for="first_name" class="edit-profile__label">Display Picture</label>
+                      {{ form.picture }}
+                  </div>
                     <div class="edit-profile__form-row">
-                        <label for="name" class="edit-profile__label">Name</label>
-                        <input id="name" type="text" value="Arun Ghimire" class="edit-profile__input" />
+                        <label for="first_name" class="edit-profile__label">First Name</label>
+                        {{ form.first_name }}
                     </div>
                     <div class="edit-profile__form-row">
-                        <label for="username" class="edit-profile__label">Username</label>
-                        <input type="text" id="username" class="edit-profile__input" />
+                        <label for="last_name" class="edit-profile__label">Last Name</label>
+                        {{ form.last_name }}
                     </div>
                     <div class="edit-profile__form-row">
-                        <label for="website" class="edit-profile__label">Website</label>
-                        <input type="url" id="website" class="edit-profile__input" />
+                        <label for="last_name" class="edit-profile__label">Nickname</label>
+                        {{ form.nickname }}
+                    </div>
+                    <div class="edit-profile__form-row">
+                      <label for="phone-number" class="edit-profile__label">Phone Number</label>
+                      {{ form.phone }}
+                    </div>
+                    <div class="edit-profile__form-row">
+                      <label for="website" class="edit-profile__label">Website</label>
+                      {{ form.website }}
+                    </div>
+                    <div class="edit-profile__form-row">
+                      <label for="website" class="edit-profile__label">Location</label>
+                      {{ form.location }}
                     </div>
                     <div class="edit-profile__form-row">
                         <label for="bio" class="edit-profile__label">Bio</label>
-                        <textarea id="bio" class="edit-profile__textarea"></textarea>
-                    </div>
-                    <div class="edit-profile__form-row">
-                        <label for="email" class="edit-profile__label">Email</label>
-                        <input type="email" class="edit-profile__input" id="email" />
-                    </div>
-                    <div class="edit-profile__form-row">
-                        <label for="phone-number" class="edit-profile__label">Phone Number</label>
-                        <input type="text" class="edit-profile__input" id="phone-number" />
+                        {{ form.bio }}
                     </div>
                     <div class="edit-profile__form-row">
                         <label for="gender" class="edit-profile__label">Gender</label>
-                        <select id="gender">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="whatever">Whatever</option>
-                        </select>
+                        {{ form.gender }}
                     </div>
                     <div class="edit-profile__form-row">
                         <span class="edit-profile__label">Similar Account Suggestions</span>
@@ -53,7 +58,7 @@
                     </div>
                     <div class="edit-profile__form-row">
                         <label class="edit-profile__label"></label>
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Update">
                     </div>
                 </form>
             </section>

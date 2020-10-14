@@ -9,7 +9,7 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ['user', 'first_name', 'last_name', 'location']
     # list_editable = ['new_price', 'available']
     list_filter = ['created_at', 'updated_at']
-    readonly_fields = ['created_at', 'updated_at']
+    readonly_fields = ['user', 'first_name', 'last_name', 'nickname', 'phone', 'location', 'website', 'bio', 'picture', 'gender', 'created_at', 'updated_at']
     class Meta:
         model = models.Profile
 
