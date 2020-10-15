@@ -30,6 +30,24 @@ class Comment(models.Model):
     body = models.TextField()
     commented_at = models.DateTimeField(auto_now_add=True, auto_now=False)
 
+    def comment_notification(sender, instance, *args, **kwargs):
+        comment = instance
+        post = comment.post
+        sender = comment.user
+        comment_body = comment.body
+        notify = Notification(post=post, sender=sender, receiver=post.user, type='Comment', comment_body=comment_body)
+        notify.save()
+
+    def uncomment_notification(sender, instance, *args, **kwargs):
+        comment = instance
+        post = comment.post
+        sender = comment.user
+        notify = Notification.objects.filter(post=post, sender=sender, type='Comment')
+        notify.delete()
+
 
 post_save.connect(Like.like_notification, sender=Like)
 post_delete.connect(Like.unlike_notification, sender=Like)
+
+post_save.connect(Comment.comment_notification, sender=Comment)
+post_delete.connect(Comment.uncomment_notification, sender=Comment)

@@ -9,7 +9,7 @@ class NotificationAdmin(admin.ModelAdmin):
     list_display = ['sender', 'receiver']
     # list_editable = ['new_price', 'available']
     list_filter = ['sender', 'receiver', 'created_at']
-    # readonly_fields = ['post', 'sender', 'receiver', 'type', 'seen', 'comment_body', 'created_at']
+    readonly_fields = ['post', 'sender', 'receiver', 'type', 'seen', 'comment_body', 'created_at']
     class Meta:
         model = Notification
 
