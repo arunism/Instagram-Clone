@@ -8,6 +8,7 @@
         <main class="feed">
               <section class="photo">
                 {% for notification in notifications %}
+                {% if notification.type == 'Like' %}
                 <a href="{% url 'post:post_details' notification.post.id %}">
                   <header class="photo__header">
                       <div class="photo__header-column">
@@ -19,41 +20,48 @@
                       </div>
                       <div class="photo__header-column">
                           <span class="photo__username text-black">{{ notification.sender }}</span>
-                          {% if notification.type == 'Like' %}
                           <i class="fa fa-thumbs-up text-black"></i>&emsp;<span class="notification__title text-black">Your post was loved by {{ notification.sender }}</span>
-                          {% elif notification.type == 'Comment' %}
-                          <i class="fa fa-comments text-black"></i>&emsp;<span class="notification__title text-black">{{ notification.comment_body }}</span>
-                          {% else %}
-                          <i class="fa fa-user-plus text-black"></i>&emsp;<span class="notification__title text-black">{{ notification.sender }} followed you! Follow back?</span>
-                          {% endif %}
                           <span class="notification__time-ago">{{ notification.created_at }}</span>
                       </div>
                   </header>
                 </a>
-                <!-- <a href="#">
+
+                {% elif notification.type == 'Comment' %}
+                <a href="{% url 'post:post_details' notification.post.id %}">
                   <header class="photo__header">
                       <div class="photo__header-column">
-                          <img class="photo__avatar" src="{% static './images/default.jpg'%}" />
+                        {% if notification.sender.profile.picture %}
+                        <img class="photo__avatar" src="{{ notification.sender.profile.picture.url }}" />
+                        {% else %}
+                        <img class="photo__avatar" src="{% static './images/default.jpg'%}" />
+                        {% endif %}
                       </div>
                       <div class="photo__header-column">
-                          <span class="photo__username text-black">arun</span>
-                          <i class="fa fa-thumbs-up text-black"></i> <span class="notification__title text-black">Liked your post</span>
-                          <span class="notification__time-ago">Oct 12, 2020</span>
+                          <span class="photo__username text-black">{{ notification.sender }}</span>
+                          <i class="fa fa-comments text-black"></i>&emsp;<span class="notification__title text-black">{{ notification.comment_body }}</span>
+                          <span class="notification__time-ago">{{ notification.created_at }}</span>
                       </div>
                   </header>
                 </a>
-                <a href="#">
+
+                {% elif notification.type == 'Follow' %}
+                <a href="{% url 'profile:profile' notification.sender.profile %}">
                   <header class="photo__header">
                       <div class="photo__header-column">
-                          <img class="photo__avatar" src="{% static './images/default.jpg'%}" />
+                        {% if notification.sender.profile.picture %}
+                        <img class="photo__avatar" src="{{ notification.sender.profile.picture.url }}" />
+                        {% else %}
+                        <img class="photo__avatar" src="{% static './images/default.jpg'%}" />
+                        {% endif %}
                       </div>
                       <div class="photo__header-column">
-                          <span class="photo__username text-black">arun</span>
-                          <i class="fa fa-user-plus text-black"></i> <span class="notification__title text-black">Followed you</span>
-                          <span class="notification__time-ago">Oct 12, 2020</span>
+                          <span class="photo__username text-black">{{ notification.sender }}</span>
+                          <i class="fa fa-user-plus text-black"></i>&emsp;<span class="notification__title text-black">{{ notification.sender }} followed you! Follow back?</span>
+                          <span class="notification__time-ago">{{ notification.created_at }}</span>
                       </div>
                   </header>
-                </a> -->
+                </a>
+                {% endif %}
                 {% endfor %}
               </section>
         </main>
