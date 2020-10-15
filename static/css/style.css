@@ -206,6 +206,9 @@ input{
 .notification-header {
   margin-bottom: 10px;
 }
+.text-black {
+  color: #000;
+}
 
 /* -------------------- Login and SignUp Page -------------------- */
 .no-padding{
