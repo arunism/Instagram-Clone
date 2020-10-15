@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+        {% include 'navbar.html' %}
+
+        <main class="feed">
+              <section class="photo">
+                <a href="#">
+                  <header class="photo__header">
+                      <div class="photo__header-column">
+                          <img class="photo__avatar" src="{% static './images/default.jpg'%}" />
+                      </div>
+                      <div class="photo__header-column">
+                          <span class="photo__username">arun</span>
+                          <i class="fa fa-comments"></i> <span class="notification__title">This is the comment</span>
+                          <span class="notification__time-ago">Oct 12, 2020</span>
+                      </div>
+                  </header>
+                </a>
+                <a href="#">
+                  <header class="photo__header">
+                      <div class="photo__header-column">
+                          <img class="photo__avatar" src="{% static './images/default.jpg'%}" />
+                      </div>
+                      <div class="photo__header-column">
+                          <span class="photo__username">arun</span>
+                          <i class="fa fa-thumbs-up"></i> <span class="notification__title">Liked your post</span>
+                          <span class="notification__time-ago">Oct 12, 2020</span>
+                      </div>
+                  </header>
+                </a>
+                <a href="#">
+                  <header class="photo__header">
+                      <div class="photo__header-column">
+                          <img class="photo__avatar" src="{% static './images/default.jpg'%}" />
+                      </div>
+                      <div class="photo__header-column">
+                          <span class="photo__username">arun</span>
+                          <i class="fa fa-user-plus"></i> <span class="notification__title">Followed you</span>
+                          <span class="notification__time-ago">Oct 12, 2020</span>
+                      </div>
+                  </header>
+                </a>
+              </section>
+
+        </main>
+
+{% endblock %}

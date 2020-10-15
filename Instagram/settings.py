@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'user_profile.apps.UserProfileConfig',
     'follow.apps.FollowConfig',
     'reaction.apps.ReactionConfig',
+    'notification.apps.NotificationConfig',
 ]
 
 MIDDLEWARE = [

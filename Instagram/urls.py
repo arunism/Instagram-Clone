@@ -27,6 +27,7 @@ urlpatterns = [
     path('profile/', include('user_profile.urls')),
     path('follow/', include('follow.urls')),
     path('reactions/', include('reaction.urls')),
+    path('notification/', include('notification.urls')),
 
     path('reset-password/done/', auth_views.PasswordResetDoneView.as_view(template_name='reset-password-done.html'), name='password_reset_done'),
     path('reset-password/confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='reset-password-confirm.html'), name='password_reset_confirm'),
