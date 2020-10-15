@@ -101,6 +101,18 @@ input{
     text-decoration: none;
     font-size:22px;
 }
+.count-badge {
+  padding: 0 6px;
+  color: #fff;
+  border: 1px solid red;
+  border-radius: 50%;
+  background-color: red;
+  position: relative;
+  top: -18px;
+  left: -8px;
+  font-size: 14px;
+  font-weight: 600;
+}
 
 /* -------------------- Feeds Page -------------------- */
 .feed, .image-detail{
@@ -427,6 +439,7 @@ input{
 }
 #cog{
     transition: all .5s ease-in-out;
+    cursor: pointer;
 }
 #cog:hover{
     transform: rotate(1turn);

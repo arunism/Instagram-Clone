@@ -24,6 +24,9 @@
                           <i class="fa fa-thumbs-up text-black"></i>&emsp;<span class="notification__title text-black">Your post was loved by {{ notification.sender }}</span>
                           <span class="notification__time-ago">{{ notification.created_at|naturaltime }}</span>
                       </div>
+                      <div class="photo__header-column">
+                          <img class="photo__avatar" src="{% static './images/default.jpg'%}" />
+                      </div>
                   </header>
                 </a>
 
