@@ -101,6 +101,9 @@ input{
     text-decoration: none;
     font-size:22px;
 }
+.navigation__logo2 {
+  display: none;
+}
 .count-badge {
   padding: 0 6px;
   color: #fff;
@@ -679,6 +682,12 @@ input[type="submit"]{
     }
     .navigation__icons{
         display: flex;
+    }
+    .navigation__logo {
+      display: none;
+    }
+    .navigation__logo2 {
+      display: block;
     }
     /* Photo */
     .photo{

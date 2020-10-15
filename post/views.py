@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from post.models import Post
@@ -64,3 +65,10 @@ def post_details(request, id):
 
     context = {'title':'Post Details', 'post':post, 'form':form, 'comments':comments}
     return render(request, 'post-detail.html', context)
+
+@login_required
+def search(request):
+    query = request.GET['query']
+    users = User.objects.filter(username__icontains=query)
+    context = {'title':'Search Results', 'users':users}
+    return render(request, 'search.html', context)

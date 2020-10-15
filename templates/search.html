@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+        {% include 'navbar.html' %}
+
+        <main class="explore">
+            <section class="people">
+                <ul class="people__list">
+
+                  {% for user in users %}
+                    <li class="people__person">
+                        <div class="people__column">
+                            <div class="people__avatar-container">
+                                <img src="{% static './images/default.jpg'%}" class="people__avatar"/>
+                            </div>
+                            <div class="people__info">
+                                <span class="people__username">
+                                  {{ user.username }}
+                                  {% if user.is_staff %}
+                                  <img src="{% static './images/verified.png' %}" />
+                                  {% endif %}
+                                </span>
+                                <span class="people__full-name">{{ user.first_name }} {{ user.last_name }}</span>
+                            </div>
+                        </div>
+                        <div class="people__column">
+                            <a href="{% url 'profile:profile' user.username %}">Visit Profile</a>
+                        </div>
+                    </li>
+                  {% endfor %}
+
+                </ul>
+            </section>
+        </main>
+
+{% endblock %}
