@@ -183,6 +183,7 @@ input{
     resize: none;
     font-size: 14px;
     padding-top:15px;
+    padding-bottom:25px;
 }
 .photo__add-comment:focus{
     outline: none;

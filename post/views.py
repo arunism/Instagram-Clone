@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from post.models import Post
-from reaction.models import Like
 from follow.models import Stream
+from reaction.models import Like, Comment
+from reaction.forms import CommentForm
 from post.forms import CreatePostForm
 
 # Create your views here.
@@ -46,5 +49,18 @@ def create_post(request):
 @login_required
 def post_details(request, id):
     post = get_object_or_404(Post, id=id)
-    context = {'title':'Post Details', 'post':post}
+    comments = Comment.objects.filter(post=post).order_by('commented_at')
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.user = request.user
+            comment.save()
+            return HttpResponseRedirect(reverse('post:post_details', args=[id]))
+    else:
+        form = CommentForm()
+
+    context = {'title':'Post Details', 'post':post, 'form':form, 'comments':comments}
     return render(request, 'post-detail.html', context)

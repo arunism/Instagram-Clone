@@ -40,9 +40,10 @@
                             </a>
                         </span>
                         <span class="photo__icon">
-                            <i class="fa fa-comment-o fa-lg"></i>
+                            <a href="{% url 'post:post_details' post.id %}"><i class="fa fa-comment-o fa-lg"></i></a>
                         </span>
                     </div>
+                    <span class="photo__time-ago">{{ post.created_at }}</span>
                     <span class="photo__likes">{{ post.likes }} likes</span>
                     <ul class="photo__comments">
                         <li class="photo__comment">
@@ -51,15 +52,7 @@
                             {{ post.caption }}
                             {% endif %}
                         </li>
-                        <li class="photo__comment">
-                            <span class="photo__comment-author">lynn</span>no is not!
-                        </li>
                     </ul>
-                    <span class="photo__time-ago">{{ post.created_at }}</span>
-                    <div class="photo__add-comment-container">
-                        <textarea placeholder="Add a comment..." class="photo__add-comment"></textarea>
-                        <i class="fa fa-ellipsis-h"></i>
-                    </div>
                 </div>
             </section>
 
