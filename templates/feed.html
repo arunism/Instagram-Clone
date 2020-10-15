@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block content %}
 
@@ -43,7 +44,7 @@
                             <a href="{% url 'post:post_details' post.id %}"><i class="fa fa-comment-o fa-lg"></i></a>
                         </span>
                     </div>
-                    <span class="photo__time-ago">{{ post.created_at }}</span>
+                    <span class="photo__time-ago">{{ post.created_at|naturaltime }}</span>
                     <span class="photo__likes">{{ post.likes }} likes</span>
                     <ul class="photo__comments">
                         <li class="photo__comment">

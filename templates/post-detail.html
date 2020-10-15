@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block content %}
 
@@ -53,7 +54,7 @@
                       </li>
                       {% endfor %}
                   </ul>
-                  <span class="photo__time-ago">{{ post.created_at }}</span>
+                  <span class="photo__time-ago">{{ post.created_at|naturaltime }}</span>
                   <form method='POST' class="photo__add-comment-container">
                     {% csrf_token %}
                       {{ form.body }}

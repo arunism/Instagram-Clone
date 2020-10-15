@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block content %}
 
@@ -21,7 +22,7 @@
                       <div class="photo__header-column">
                           <span class="photo__username text-black">{{ notification.sender }}</span>
                           <i class="fa fa-thumbs-up text-black"></i>&emsp;<span class="notification__title text-black">Your post was loved by {{ notification.sender }}</span>
-                          <span class="notification__time-ago">{{ notification.created_at }}</span>
+                          <span class="notification__time-ago">{{ notification.created_at|naturaltime }}</span>
                       </div>
                   </header>
                 </a>
@@ -39,7 +40,7 @@
                       <div class="photo__header-column">
                           <span class="photo__username text-black">{{ notification.sender }}</span>
                           <i class="fa fa-comments text-black"></i>&emsp;<span class="notification__title text-black">{{ notification.comment_body }}</span>
-                          <span class="notification__time-ago">{{ notification.created_at }}</span>
+                          <span class="notification__time-ago">{{ notification.created_at|naturaltime }}</span>
                       </div>
                   </header>
                 </a>
@@ -57,7 +58,7 @@
                       <div class="photo__header-column">
                           <span class="photo__username text-black">{{ notification.sender }}</span>
                           <i class="fa fa-user-plus text-black"></i>&emsp;<span class="notification__title text-black">{{ notification.sender }} followed you! Follow back?</span>
-                          <span class="notification__time-ago">{{ notification.created_at }}</span>
+                          <span class="notification__time-ago">{{ notification.created_at|naturaltime }}</span>
                       </div>
                   </header>
                 </a>
