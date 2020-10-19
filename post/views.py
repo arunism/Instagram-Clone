@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 from post.models import Post
 from follow.models import Stream
 from reaction.models import Like, Comment
@@ -68,7 +69,15 @@ def post_details(request, id):
 
 @login_required
 def search(request):
-    query = request.GET['query']
-    users = User.objects.filter(username__icontains=query)
+    try:
+        query = request.GET['query']
+    except:
+        query = None
+    if query:
+        users = User.objects.all()
+        users = users.filter(Q(username__icontains=query) | Q(first_name__icontains=query) | Q(last_name__icontains=query))
+        # __iexact for exact match
+    else:
+        users = User.objects.all()
     context = {'title':'Search Results', 'users':users}
     return render(request, 'search.html', context)
