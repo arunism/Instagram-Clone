@@ -15,7 +15,7 @@ This project is a clone of popular social media site 'Instagram'. It supports al
     * Change password
     * Reset password via registered Email
     * Star view for varified accounts
-    * Search User with username
+    * Search User with username, first name and last name
     * Accepts posts from users
     * Allow users to follow each other
     * Allow users to like posts
