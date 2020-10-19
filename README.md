@@ -2,6 +2,8 @@
 
 This project is a clone of popular social media site 'Instagram'. It supports almost all the features that official Instagram supports. This website uses Django Python Web Framework for backend and fronted is written in plain html(HTML5), CSS and Javascript. This project is fully responsive and can be viewed in any of your devices.
 
+### The project goes live here: https://arun-instagram.herokuapp.com/
+
 ![](static/images/screenshots/register.png)
 
 ![](static/images/screenshots/insta.png)
@@ -12,7 +14,8 @@ This project is a clone of popular social media site 'Instagram'. It supports al
     * User login and logout
     * Change password
     * Reset password via registered Email
-    * Search User with username, First name, Last name
+    * Star view for varified accounts
+    * Search User with username
     * Accepts posts from users
     * Allow users to follow each other
     * Allow users to like posts
@@ -35,5 +38,6 @@ This project is a clone of popular social media site 'Instagram'. It supports al
     * Run pip install -r requirements.txt (for Python 2) OR pip3 install -r requirements.txt (for Python 3)
     * Connect the code with your database
     * Run python3 manage.py runserver
+    * Hit http://127.0.0.1:8000/ on your browser
 
 ![](static/images/screenshots/search.png)

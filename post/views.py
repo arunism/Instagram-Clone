@@ -69,6 +69,6 @@ def post_details(request, id):
 @login_required
 def search(request):
     query = request.GET['query']
-    users = User.objects.filter(username__icontains=query, first_name__icontains=query, last_name__icontains=query)
+    users = User.objects.filter(username__icontains=query)
     context = {'title':'Search Results', 'users':users}
     return render(request, 'search.html', context)
